@@ -247,7 +247,7 @@ const simulate1v1Battle = () => {
         };
     } while (!firstWarriorName || !findName);
     do {
-        secondWarriorName = prompt(`Nhập tên chiến binh thứ nhất`).trim();
+        secondWarriorName = prompt(`Nhập tên chiến binh thứ hai`).trim();
         if (!secondWarriorName) {
             alert(`Không được để trống`);
             continue;
@@ -335,3 +335,4 @@ do {
         };
 
 } while (out !== 1);
+
