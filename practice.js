@@ -231,14 +231,14 @@ const classCoverageCheck = () => {
 };
 
 const simulate1v1Battle = () => {
-    let firstWarriorName, secondWarriorName, firstWarriorIndex, secondWarriorIndex;
+    let firstWarriorName, secondWarriorName, firstWarriorIndex, secondWarriorIndex, findName;
     do {
         firstWarriorName = prompt(`Nhập tên chiến binh thứ nhất`).trim();
         if (!firstWarriorName) {
             alert(`Không được để trống`);
             continue;
         };
-        let findName = warriors.find((warrior, index) => {
+        findName = warriors.find((warrior, index) => {
             firstWarriorIndex = index;
             return warrior.name.toLowerCase().includes(firstWarriorName.toLowerCase());
         });
@@ -252,7 +252,7 @@ const simulate1v1Battle = () => {
             alert(`Không được để trống`);
             continue;
         };
-        let findName = warriors.find((warrior, index) => {
+        findName = warriors.find((warrior, index) => {
             secondWarriorIndex = index;
             return warrior.name.toLowerCase().includes(secondWarriorName.toLowerCase());
         });
@@ -333,4 +333,5 @@ do {
                 alert("Vui lòng nhập đúng lựa chọn");
                 break;
         };
+
 } while (out !== 1);
