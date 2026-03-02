@@ -56,10 +56,7 @@ const addNewWarrior = () => {
     do {
         check = 0;
         newAtk = +prompt(`Nhập sức tấn công của chiến binh (1-100)`).trim();
-        if (!newAtk) {
-          alert(`Không được để trống`);
-            check = 1;
-        } else if (!Number.isInteger(newAtk) || newAtk > 100 || newAtk < 1) {
+        if (!newAtk || !Number.isInteger(newAtk) || newAtk > 100 || newAtk < 1) {
             alert(`Phải nhập đúng định dạng`);
             check = 1;
         };
@@ -67,10 +64,7 @@ const addNewWarrior = () => {
     do {
         check = 0;
         newDef = +prompt(`Nhập sức phòng thủ của chiến binh`).trim();
-        if (!newDef) {
-            alert(`Không được để trống`);
-            check = 1;
-        } else if (!Number.isInteger(newDef) || newDef < 0) {
+        if (!newDef || !Number.isInteger(newDef) || newDef < 0) {
             alert(`Phải nhập số nguyên lớn hơn hoặc bằng 0`);
             check = 1;
         };
@@ -193,10 +187,10 @@ const totalPowerGuild = () => {
 };
 
 const sortGuild = () => {
-    let arraySortedInAscendingOrder = warriors.toSort((el1, el2) => {
+    let arraySortedInAscendingOrder = warriors.toSorted((el1, el2) => {
         return el1.attack - el2.attack;
     });
-    let arraySortedInDescendingOrder = warriors.toSort((el1, el2) => {
+    let arraySortedInDescendingOrder = warriors.toSorted((el1, el2) => {
         return el2.attack - el1.attack;
     });
     console.log(`Mảng sắp xếp guild theo tấn công tăng dần`);
@@ -240,7 +234,7 @@ const simulate1v1Battle = () => {
         };
         findName = warriors.find((warrior, index) => {
             firstWarriorIndex = index;
-            return warrior.name.toLowerCase().includes(firstWarriorName.toLowerCase());
+            return warrior.name.toLowerCase() === firstWarriorName.toLowerCase();
         });
         if (!findName) {
             alert(`Không tìm thấy chiến binh nào tên ${firstWarriorName}`);
@@ -254,7 +248,7 @@ const simulate1v1Battle = () => {
         };
         findName = warriors.find((warrior, index) => {
             secondWarriorIndex = index;
-            return warrior.name.toLowerCase().includes(secondWarriorName.toLowerCase());
+            return warrior.name.toLowerCase() === secondWarriorName.toLowerCase();
         });
         if (!findName) {
             alert(`Không tìm thấy chiến binh nào tên ${secondWarriorName}`);
@@ -333,6 +327,4 @@ do {
                 alert("Vui lòng nhập đúng lựa chọn");
                 break;
         };
-
 } while (out !== 1);
-
